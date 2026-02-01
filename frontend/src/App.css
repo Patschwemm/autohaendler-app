@@ -1,0 +1,249 @@
+/* CSS Custom Properties - Color Variables */
+:root {
+  --primary-dark: #2c3e50;
+  --primary-medium: #34495e;
+  --primary-border: #4a5f7a;
+  --secondary-blue: #3498db;
+  --light-gray: #ecf0f1;
+  --medium-gray: #bdc3c7;
+  --dark-gray: #7f8c8d;
+  --background-light: #f8f9fa;
+  --white: #ffffff;
+  --black: #000000;
+  --active-background: #d3d3d3;
+  --hover-background: #c5c5c5;
+  --focus-shadow: rgba(52, 152, 219, 0.1);
+  --menu-overlay: rgba(0, 0, 0, 0.5);
+  --button-hover: rgba(255, 255, 255, 0.1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.App {
+  display: flex;
+  min-height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Side Menu Styles */
+.side-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 280px;
+  height: 100vh;
+  background-color: var(--primary-dark);
+  color: var(--white);
+  transform: translateX(-230px);
+  transition: transform 0.3s ease-in-out;
+  z-index: 1000;
+  overflow-y: auto;
+}
+
+.side-menu.open {
+  transform: translateX(0);
+}
+
+.menu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 0.75rem 0.5rem 1rem 1rem;
+  background-color: var(--primary-medium);
+  border-bottom: 1px solid var(--primary-border);
+  position: relative;
+}
+
+.menu-header h2 {
+  color: var(--white);
+  font-size: 1.5rem;
+}
+
+.close-btn {
+  display: none;
+}
+
+.menu-items {
+  list-style: none;
+  padding: 0;
+}
+
+.menu-items li {
+  border-bottom: 1px solid var(--primary-medium);
+}
+
+.menu-items a {
+  display: block;
+  padding: 1rem 1.5rem;
+  color: var(--white);
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.menu-items a:hover {
+  background-color: var(--primary-medium);
+}
+
+/* Menu Overlay for mobile */
+.menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--menu-overlay);
+  z-index: 999;
+}
+
+/* Main Content Styles */
+.main-content {
+  flex: 1;
+  transition: margin-left 0.3s ease-in-out;
+}
+
+.main-content.menu-open {
+  margin-left: 280px;
+}
+
+.app-header {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  background-color: var(--light-gray);
+  border-bottom: 1px solid var(--medium-gray);
+  gap: 1rem;
+}
+
+.app-header h1 {
+  color: var(--primary-dark);
+}
+
+/* Arrow Menu Button - replaces hamburger */
+.menu-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  margin-left: auto;
+}
+
+.menu-toggle:hover {
+  background-color: var(--button-hover);
+}
+
+/* Arrow Icon */
+.menu-toggle::before {
+  content: '';
+  width: 0;
+  height: 0;
+  border-style: solid;
+  transition: all 0.3s ease;
+  border-left: 12px solid var(--white);
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-right: 1px solid transparent;
+}
+
+/* Arrow pointing left when menu is open */
+.side-menu.open .menu-toggle::before {
+  border-right: 12px solid var(--white);
+  border-left: none;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+}
+
+.menu-toggle:hover::before {
+  border-left-color: var(--secondary-blue);
+}
+
+.side-menu.open .menu-toggle:hover::before {
+  border-right-color: var(--secondary-blue);
+  border-left-color: transparent;
+}
+
+.content {
+  padding: 2rem;
+  background-color: var(--background-light);
+  min-height: calc(100vh - 80px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .main-content.menu-open {
+    margin-left: 0;
+  }
+  
+  .side-menu {
+    width: 100%;
+    max-width: 280px;
+  }
+}
+
+.menu-items button {
+  display: block;
+  width: 100%;
+  padding: 1.25rem 1.75rem;
+  background: none;
+  border: none;
+  color: var(--white);
+  text-decoration: none;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.menu-items button:hover {
+  background-color: var(--hover-background);
+}
+
+.menu-items button.active {
+  background-color: var(--active-background);
+  color: var(--black);
+  font-weight: bold;
+}
+
+
+.page-content {
+  padding: 2rem;
+  background-color: var(--white);
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  margin-bottom: 2rem;
+}
+
+.page-content h2 {
+  color: var(--primary-dark);
+  margin-bottom: 1rem;
+  font-size: 1.8rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .main-content.menu-open {
+    margin-left: 0;
+  }
+  
+  .side-menu {
+    width: 100%;
+    max-width: 280px;
+  }
+}
+
+@media (min-width: 769px) {
+  .menu-overlay {
+    display: none;
+  }
+}

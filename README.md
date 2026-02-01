@@ -76,3 +76,75 @@ cd backend
 dotnet restore
 dotnet ef database update
 dotnet run
+
+Standardmäßig läuft die API unter:
+
+https://localhost:5001
+
+
+Swagger ist aktiviert und dient zur API-Erkundung.
+
+Setup – Frontend
+
+Voraussetzungen:
+
+Node.js (LTS)
+
+cd frontend
+npm install
+npm run dev
+
+
+Frontend läuft standardmäßig unter:
+
+http://localhost:5173
+
+---
+
+## Architekturprinzipien
+
+- Frontend und Backend sind strikt getrennt
+- Business-Logik befindet sich ausschließlich im Backend
+- Frontend enthält keine fachliche Logik
+- REST-basierte Kommunikation
+- Klare Domänenmodelle (Kunde, Fahrzeug, Verkauf)
+
+---
+
+## Datenbank
+
+- Start mit SQLite (lokale Datei)
+- Entity Framework Core als ORM
+- Wechsel zu PostgreSQL oder SQL Server jederzeit möglich
+
+---
+
+## Dokumentenerstellung
+
+- Rechnungen werden serverseitig erzeugt
+- PDF-Generierung über QuestPDF
+- Word-Vorlagen optional über OpenXML / DocX
+- Keine clientseitige Dokumentenlogik
+
+---
+
+## Docker
+
+Docker ist nicht Teil des initialen MVPs.
+
+Die Anwendung ist jedoch so strukturiert, dass:
+
+- Backend und Frontend später containerisiert werden können
+- ein docker-compose.yml problemlos ergänzt werden kann
+
+Docker wird bewusst erst in einer späteren Phase eingeführt.
+
+---
+
+## Roadmap (optional)
+
+- Rollen / Benutzer
+- Mehrwertsteuer-Varianten (Export, EU)
+- Erweiterte Dokumentvorlagen
+- Docker-Setup
+- Deployment
