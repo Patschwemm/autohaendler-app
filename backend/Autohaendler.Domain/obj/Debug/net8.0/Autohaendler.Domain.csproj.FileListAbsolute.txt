@@ -1,0 +1,12 @@
+/root/GitHub/autohaendler-app/backend/Autohaendler.Domain/bin/Debug/net8.0/Autohaendler.Domain.deps.json
+/root/GitHub/autohaendler-app/backend/Autohaendler.Domain/bin/Debug/net8.0/Autohaendler.Domain.dll
+/root/GitHub/autohaendler-app/backend/Autohaendler.Domain/bin/Debug/net8.0/Autohaendler.Domain.pdb
+/root/GitHub/autohaendler-app/backend/Autohaendler.Domain/obj/Debug/net8.0/Autohaendler.Domain.GeneratedMSBuildEditorConfig.editorconfig
+/root/GitHub/autohaendler-app/backend/Autohaendler.Domain/obj/Debug/net8.0/Autohaendler.Domain.AssemblyInfoInputs.cache
+/root/GitHub/autohaendler-app/backend/Autohaendler.Domain/obj/Debug/net8.0/Autohaendler.Domain.AssemblyInfo.cs
+/root/GitHub/autohaendler-app/backend/Autohaendler.Domain/obj/Debug/net8.0/Autohaendler.Domain.csproj.CoreCompileInputs.cache
+/root/GitHub/autohaendler-app/backend/Autohaendler.Domain/obj/Debug/net8.0/Autohaendler.Domain.sourcelink.json
+/root/GitHub/autohaendler-app/backend/Autohaendler.Domain/obj/Debug/net8.0/Autohaendler.Domain.dll
+/root/GitHub/autohaendler-app/backend/Autohaendler.Domain/obj/Debug/net8.0/refint/Autohaendler.Domain.dll
+/root/GitHub/autohaendler-app/backend/Autohaendler.Domain/obj/Debug/net8.0/Autohaendler.Domain.pdb
+/root/GitHub/autohaendler-app/backend/Autohaendler.Domain/obj/Debug/net8.0/ref/Autohaendler.Domain.dll

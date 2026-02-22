@@ -1,16 +1,19 @@
 import React from 'react';
 
+interface Vehicle {
+  nr1?: string;
+  nr2?: string;
+  typ1?: string;
+  typ2?: string;
+  fahrzeug?: string;
+  detail1?: string;
+  detail2?: string;
+  farbe?: string;
+  [key: string]: any; // Allow additional properties
+}
+
 interface FahrzeugeBaseInfoProps {
-  formData: {
-    nr1: string;
-    nr2: string;
-    typ1: string;
-    typ2: string;
-    fahrzeug: string;
-    detail1: string;
-    detail2: string;
-    farbe: string;
-  };
+  vehicleData: Vehicle;
   handleChange: (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
   typ1Options: { value: string; label: string }[];
   typ2Options: { value: string; label: string }[];
@@ -19,7 +22,7 @@ interface FahrzeugeBaseInfoProps {
 }
 
 const FahrzeugeBaseInfo: React.FC<FahrzeugeBaseInfoProps> = ({
-  formData,
+  vehicleData,
   handleChange,
   typ1Options,
   typ2Options,
@@ -34,7 +37,7 @@ const FahrzeugeBaseInfo: React.FC<FahrzeugeBaseInfoProps> = ({
         <input
           type="text"
           name="nr1"
-          value={formData.nr1}
+          value={vehicleData.nr1}
           onChange={handleChange}
           className="form-input"
           placeholder="Nr 1"
@@ -42,7 +45,7 @@ const FahrzeugeBaseInfo: React.FC<FahrzeugeBaseInfoProps> = ({
         <input
           type="text"
           name="nr2"
-          value={formData.nr2}
+          value={vehicleData.nr2}
           onChange={handleChange}
           className="form-input"
           placeholder="Nr 2"
@@ -56,7 +59,7 @@ const FahrzeugeBaseInfo: React.FC<FahrzeugeBaseInfoProps> = ({
       <div className="input-group">
         <select
           name="typ1"
-          value={formData.typ1}
+          value={vehicleData.typ1}
           onChange={handleChange}
           className="form-select"
         >
@@ -69,7 +72,7 @@ const FahrzeugeBaseInfo: React.FC<FahrzeugeBaseInfoProps> = ({
         </select>
         <select
           name="typ2"
-          value={formData.typ2}
+          value={vehicleData.typ2}
           onChange={handleChange}
           className="form-select"
         >
@@ -89,7 +92,7 @@ const FahrzeugeBaseInfo: React.FC<FahrzeugeBaseInfoProps> = ({
       <div className="input-group single">
         <select
           name="fahrzeug"
-          value={formData.fahrzeug}
+          value={vehicleData.fahrzeug}
           onChange={handleChange}
           className="form-select"
         >
@@ -110,7 +113,7 @@ const FahrzeugeBaseInfo: React.FC<FahrzeugeBaseInfoProps> = ({
         <input
           type="text"
           name="detail1"
-          value={formData.detail1}
+          value={vehicleData.detail1}
           onChange={handleChange}
           className="form-input"
           placeholder="Detail 1"
@@ -118,7 +121,7 @@ const FahrzeugeBaseInfo: React.FC<FahrzeugeBaseInfoProps> = ({
         <input
           type="text"
           name="detail2"
-          value={formData.detail2}
+          value={vehicleData.detail2}
           onChange={handleChange}
           className="form-input"
           placeholder="Detail 2"
@@ -132,7 +135,7 @@ const FahrzeugeBaseInfo: React.FC<FahrzeugeBaseInfoProps> = ({
       <div className="input-group single">
         <select
           name="farbe"
-          value={formData.farbe}
+          value={vehicleData.farbe}
           onChange={handleChange}
           className="form-select"
         >

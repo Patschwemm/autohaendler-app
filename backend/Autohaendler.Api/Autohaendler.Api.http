@@ -1,0 +1,6 @@
+@Autohaendler.Api_HostAddress = http://localhost:5160
+
+GET {{Autohaendler.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

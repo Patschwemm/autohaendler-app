@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="../build/Autohaendler.Api.props" />
+</Project>

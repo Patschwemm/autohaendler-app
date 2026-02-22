@@ -2,7 +2,8 @@
 .tab {
   display: flex;
   gap: 0.5rem;
-  margin: 2rem 0 0.2rem 0;
+  margin: 1rem 0 0.2rem 0;
+  flex-shrink: 0;
 }
 
 .tablinks {
@@ -38,16 +39,258 @@
   background: #fff;
   border: 1px solid #d1d5db;
   border-radius: 0 8px 8px 8px;
-  padding: 0rem 1rem;
+  padding: 1rem;
   margin-top: -1px;
   min-height: 120px;
+  flex: 1;
+  overflow-y: auto;
   box-shadow: 0 2px 8px rgba(44, 62, 80, 0.04);
 }
 
 
 .fahrzeuge-form {
   max-width: 375px;
-  margin-top: 2rem;
+  margin-top: 1rem;
+  flex-shrink: 0;
+}
+
+/* Two-column layout for the entire page */
+.fahrzeuge-main-layout {
+  display: flex;
+  gap: 2rem;
+  height: calc(100vh - 120px);
+}
+
+.fahrzeuge-left-column {
+  flex: 1;
+  min-width: 600px;
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.fahrzeuge-right-column {
+  flex: 1;
+  min-width: 350px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.fahrzeuge-right-column h3 {
+  color: #2c3e50;
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+/* Vehicle Table Styles */
+.vehicle-table-section {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.vehicle-table-section h3 {
+  color: #2c3e50;
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.vehicle-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(44, 62, 80, 0.08);
+  border: 1px solid #d1d5db;
+}
+
+.vehicle-table th {
+  background: #f8f9fa;
+  color: #2c3e50;
+  font-weight: 600;
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 2px solid #e9ecef;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.vehicle-table td {
+  padding: 0.875rem 1rem;
+  border-bottom: 1px solid #e9ecef;
+  color: #374151;
+  font-size: 0.9rem;
+}
+
+.vehicle-table tbody tr:hover {
+  background-color: #f8f9fa;
+  cursor: pointer;
+}
+
+.vehicle-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.error-message {
+  color: #dc3545;
+  font-weight: 500;
+  padding: 0.5rem;
+  background: #f8d7da;
+  border: 1px solid #f5c6cb;
+  border-radius: 4px;
+  margin: 1rem 0;
+}
+
+/* Control buttons for new/cancel */
+.control-buttons {
+  display: flex;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.control-button {
+  background: #3498db;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.control-button:hover {
+  background: #2980b9;
+}
+
+/* Add and Delete button styles */
+.add-button {
+  background: #27ae60 !important;
+  font-weight: 700;
+  font-size: 1.2rem;
+  width: 50px;
+  height: 50px;
+  padding: 0;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.add-button:hover {
+  background: #229954 !important;
+  transform: scale(1.05);
+}
+
+.add-button:disabled {
+  background: #95a5a6 !important;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.delete-button {
+  background: #e74c3c !important;
+  font-weight: 700;
+  font-size: 1.4rem;
+  width: 50px;
+  height: 50px;
+  padding: 0;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.delete-button:hover:not(:disabled) {
+  background: #c0392b !important;
+  transform: scale(1.05);
+}
+
+.delete-button:disabled {
+  background: #95a5a6 !important;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.save-button {
+  background: #f0b962 !important;
+  font-weight: 700;
+  font-size: 1.2rem;
+  width: 50px;
+  height: 50px;
+  padding: 0;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.save-button:hover:not(:disabled) {
+  background: #e67e22 !important;
+  transform: scale(1.05);
+}
+
+.save-button:disabled {
+  background: #95a5a6 !important;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.cancel-button {
+  background: #9b59b6 !important;
+  font-weight: 700;
+  font-size: 1.4rem;
+  width: 50px;
+  height: 50px;
+  padding: 0;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cancel-button:hover {
+  background: #8e44ad !important;
+  transform: scale(1.05);
+}
+
+/* Selected row styling */
+.vehicle-table tbody tr.selected-row {
+  background-color: #e3f2fd !important;
+  border-left: 4px solid #2196f3;
+}
+
+.vehicle-table tbody tr.selected-row:hover {
+  background-color: #e3f2fd !important;
+}
+
+/* Standardize tab content widths */
+.tabcontent {
+  width: 100%;
+}
+
+.tabVerkauf-form {
+  width: 100%;
+  min-width: 700px;
+}
+
+.tabverkauf-container {
+  width: 100%;
+  min-width: 700px;
+}
+
+.tabverkauf-form-section {
+  width: 100%;
+  max-width: 600px;
+}
   font-size: 0.9rem;
 }
 
@@ -147,6 +390,33 @@
 }
 
 /* Responsive design */
+@media (max-width: 1200px) {
+  .fahrzeuge-main-layout {
+    flex-direction: column;
+  }
+  
+  .fahrzeuge-left-column {
+    min-width: 100%;
+    max-width: 100%;
+  }
+  
+  .fahrzeuge-right-column {
+    width: 100%;
+    min-width: 100%;
+  }
+}
+
+@media (max-width: 800px) {
+  .tabVerkauf-form,
+  .tabverkauf-container {
+    min-width: 100%;
+  }
+  
+  .tabcontent {
+    padding: 0.5rem;
+  }
+}
+
 @media (max-width: 600px) {
   .form-row {
     flex-direction: column;

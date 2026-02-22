@@ -1,0 +1,6 @@
+.large-textarea {
+  width: 300px;   /* or 100% */
+  height: 120px;  /* or any value you want */
+  min-width: 200px;
+  min-height: 80px;
+}

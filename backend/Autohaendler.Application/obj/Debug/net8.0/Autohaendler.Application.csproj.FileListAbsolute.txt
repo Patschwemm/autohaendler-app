@@ -1,0 +1,16 @@
+/root/GitHub/autohaendler-app/backend/Autohaendler.Application/bin/Debug/net8.0/Autohaendler.Application.deps.json
+/root/GitHub/autohaendler-app/backend/Autohaendler.Application/bin/Debug/net8.0/Autohaendler.Application.dll
+/root/GitHub/autohaendler-app/backend/Autohaendler.Application/bin/Debug/net8.0/Autohaendler.Application.pdb
+/root/GitHub/autohaendler-app/backend/Autohaendler.Application/bin/Debug/net8.0/Autohaendler.Domain.dll
+/root/GitHub/autohaendler-app/backend/Autohaendler.Application/bin/Debug/net8.0/Autohaendler.Domain.pdb
+/root/GitHub/autohaendler-app/backend/Autohaendler.Application/obj/Debug/net8.0/Autohaendler.Application.csproj.AssemblyReference.cache
+/root/GitHub/autohaendler-app/backend/Autohaendler.Application/obj/Debug/net8.0/Autohaendler.Application.GeneratedMSBuildEditorConfig.editorconfig
+/root/GitHub/autohaendler-app/backend/Autohaendler.Application/obj/Debug/net8.0/Autohaendler.Application.AssemblyInfoInputs.cache
+/root/GitHub/autohaendler-app/backend/Autohaendler.Application/obj/Debug/net8.0/Autohaendler.Application.AssemblyInfo.cs
+/root/GitHub/autohaendler-app/backend/Autohaendler.Application/obj/Debug/net8.0/Autohaendler.Application.csproj.CoreCompileInputs.cache
+/root/GitHub/autohaendler-app/backend/Autohaendler.Application/obj/Debug/net8.0/Autohaendler.Application.sourcelink.json
+/root/GitHub/autohaendler-app/backend/Autohaendler.Application/obj/Debug/net8.0/Autohaen.49761884.Up2Date
+/root/GitHub/autohaendler-app/backend/Autohaendler.Application/obj/Debug/net8.0/Autohaendler.Application.dll
+/root/GitHub/autohaendler-app/backend/Autohaendler.Application/obj/Debug/net8.0/refint/Autohaendler.Application.dll
+/root/GitHub/autohaendler-app/backend/Autohaendler.Application/obj/Debug/net8.0/Autohaendler.Application.pdb
+/root/GitHub/autohaendler-app/backend/Autohaendler.Application/obj/Debug/net8.0/ref/Autohaendler.Application.dll

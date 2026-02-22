@@ -15,7 +15,16 @@
   --focus-shadow: rgba(52, 152, 219, 0.1);
   --menu-overlay: rgba(0, 0, 0, 0.5);
   --button-hover: rgba(255, 255, 255, 0.1);
-}
+  
+  /* Padding Variables */
+  --content-padding: 0;
+  --page-padding: 1rem;
+  --section-padding: 1rem;
+  --form-padding: 1rem;  
+  /* Menu Spacing Variables */
+  --menu-width: 240px;
+  --menu-hidden-offset: -190px;
+  --menu-visible-width: 50px; /* 240px - 190px */}
 
 * {
   margin: 0;
@@ -34,11 +43,11 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 280px;
+  width: var(--menu-width);
   height: 100vh;
   background-color: var(--primary-dark);
   color: var(--white);
-  transform: translateX(-230px);
+  transform: translateX(var(--menu-hidden-offset));
   transition: transform 0.3s ease-in-out;
   z-index: 1000;
   overflow-y: auto;
@@ -60,7 +69,7 @@
 
 .menu-header h2 {
   color: var(--white);
-  font-size: 1.5rem;
+  font-size: 1.25rem;
 }
 
 .close-btn {
@@ -102,17 +111,18 @@
 /* Main Content Styles */
 .main-content {
   flex: 1;
+  margin-left: var(--menu-visible-width);
   transition: margin-left 0.3s ease-in-out;
 }
 
 .main-content.menu-open {
-  margin-left: 280px;
+  margin-left: var(--menu-width);
 }
 
 .app-header {
   display: flex;
   align-items: center;
-  padding: 1rem;
+  padding: 0.75rem;
   background-color: var(--light-gray);
   border-bottom: 1px solid var(--medium-gray);
   gap: 1rem;
@@ -173,20 +183,24 @@
 }
 
 .content {
-  padding: 2rem;
+  padding: var(--content-padding);
   background-color: var(--background-light);
   min-height: calc(100vh - 80px);
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
+  .main-content {
+    margin-left: 0;
+  }
+  
   .main-content.menu-open {
     margin-left: 0;
   }
   
   .side-menu {
     width: 100%;
-    max-width: 280px;
+    max-width: var(--menu-width);
   }
 }
 
@@ -217,17 +231,19 @@
 
 
 .page-content {
-  padding: 2rem;
+  padding: var(--page-padding);
   background-color: var(--white);
   border-radius: 4px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  margin-bottom: 2rem;
+  margin-bottom: 0.5rem;
+  height: calc(100vh - 60px);
+  overflow: hidden;
 }
 
 .page-content h2 {
   color: var(--primary-dark);
   margin-bottom: 1rem;
-  font-size: 1.8rem;
+  font-size: 1.5rem;
 }
 
 /* Responsive Design */
@@ -238,7 +254,7 @@
   
   .side-menu {
     width: 100%;
-    max-width: 280px;
+    max-width: var(--menu-width);
   }
 }
 

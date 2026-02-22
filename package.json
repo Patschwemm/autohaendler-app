@@ -1,6 +1,15 @@
 {
+  "name": "autohaendler-app",
+  "version": "1.0.0",
+  "description": "Car dealer management application",
+  "scripts": {
+    "dev": "concurrently \"npm run frontend:dev\" \"npm run backend:dev\" --names \"FRONTEND,BACKEND\" --prefix-colors \"cyan,yellow\"",
+    "frontend:dev": "cd frontend && npm run dev",
+    "backend:dev": "cd backend/Autohaendler.Api && dotnet run"
+  },
   "devDependencies": {
-    "@types/react": "^19.2.10",
-    "@types/react-dom": "^19.2.3"
+    "@types/react": "^19.2.10", 
+    "@types/react-dom": "^19.2.3",
+    "concurrently": "^8.2.2"
   }
 }

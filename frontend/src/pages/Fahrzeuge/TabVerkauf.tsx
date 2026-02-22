@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './TabVerkauf.css';
 import '../../App.css'; // Import the CSS file to make CSS variables available
+import { formatDateForInput } from '../../utils';
 
 // Checkbox with label component
 export const CheckboxWithLabel = ({ label, checked, onChange, name }: { label: string, checked?: boolean, onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void, name?: string }) => (
@@ -26,50 +27,18 @@ export const RectangularCheckboxBefore = ({ label, checked, onChange, name }: { 
   </label>
 );
 
-const TabVerkauf = () => {
-  const [formData, setFormData] = useState({
-    kundenname: '',
-    vorname: '',
-    nachname: '',
-    strasse: '',
-    plz: '',
-    ort: '',
-    land: '',
-    ustIdNr: '',
-    telefon: '',
-    preis: '',
-    preisTyp: '',
-    mwstAusweis: false,
-    minPreis: '',
-    minPreisTyp: '',
-    nurFuerExport: false,
-    haendlerPreis: '',
-    haendlerPreisTyp: '',
-    verkauft: false,
-    neupreis: '',
-    neupreisTyp: '',
-    nettoVk: '',
-    vkDatum: '',
-    transport: '',
-    waehrung: '',
-    mwst: '',
-    zahlungsart: '',
-    bruttoVk: '',
-    nettoEG: false,
-    bruttoEG: false,
-    nettoExport: false,
-    bruttoExport: false,
-    differenzbest: false,
-    praeferenztext: false
-  });
+interface Vehicle {
+  [key: string]: any;
+}
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-    const { name, value, type } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: type === 'checkbox' ? (e.target as HTMLInputElement).checked : value
-    }));
-  };
+interface TabVerkaufProps {
+  vehicleData: Vehicle;
+  handleChange: (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => void;
+  onSave: () => void;
+  isEditing: boolean;
+}
+
+const TabVerkauf: React.FC<TabVerkaufProps> = ({ vehicleData, handleChange, onSave, isEditing }) => {
   return (
     <form className="tabVerkauf-form">
       <div className="tabverkauf-container">
@@ -80,7 +49,7 @@ const TabVerkauf = () => {
             <input
               type="text"
               name="kundenname"
-              value={formData.kundenname}
+              value={vehicleData.kundenname || ''}
               onChange={handleChange}
               className="form-input"
               placeholder=""
@@ -93,7 +62,7 @@ const TabVerkauf = () => {
             <input
               type="text"
               name="vorname"
-              value={formData.vorname}
+              value={vehicleData.vorname || ''}
               onChange={handleChange}
               className="form-input"
               placeholder=""
@@ -106,7 +75,7 @@ const TabVerkauf = () => {
             <input
               type="text"
               name="nachname"
-              value={formData.nachname}
+              value={vehicleData.nachname || ''}
               onChange={handleChange}
               className="form-input"
               placeholder=""
@@ -119,7 +88,7 @@ const TabVerkauf = () => {
             <input
               type="text"
               name="strasse"
-              value={formData.strasse}
+              value={vehicleData.strasse || ''}
               onChange={handleChange}
               className="form-input"
               placeholder=""
@@ -132,7 +101,7 @@ const TabVerkauf = () => {
             <input
               type="text"
               name="plz"
-              value={formData.plz}
+              value={vehicleData.plz || ''}
               onChange={handleChange}
               className="form-input"
               placeholder="PLZ"
@@ -140,7 +109,7 @@ const TabVerkauf = () => {
             <input
               type="text"
               name="ort"
-              value={formData.ort}
+              value={vehicleData.ort || ''}
               onChange={handleChange}
               className="form-input"
               placeholder="Ort"
@@ -148,7 +117,7 @@ const TabVerkauf = () => {
             <input
               type="text"
               name="land"
-              value={formData.land}
+              value={vehicleData.land || ''}
               onChange={handleChange}
               className="form-input"
               placeholder="Land"
@@ -161,7 +130,7 @@ const TabVerkauf = () => {
             <input
               type="text"
               name="ustIdNr"
-              value={formData.ustIdNr}
+              value={vehicleData.ustIdNr || ''}
               onChange={handleChange}
               className="form-input"
               placeholder=""
@@ -174,7 +143,7 @@ const TabVerkauf = () => {
             <input
               type="text"
               name="telefon"
-              value={formData.telefon}
+              value={vehicleData.telefon || ''}
               onChange={handleChange}
               className="form-input"
               placeholder=""
@@ -189,14 +158,14 @@ const TabVerkauf = () => {
             <input
               type="text"
               name="preis"
-              value={formData.preis}
+              value={vehicleData.preis || 0}
               onChange={handleChange}
               className="form-input"
               placeholder=""
             />
             <select
               name="preisTyp"
-              value={formData.preisTyp}
+              value={vehicleData.preisTyp || ''}
               onChange={handleChange}
               className="form-select"
             >
@@ -204,7 +173,7 @@ const TabVerkauf = () => {
               <option value="netto">Netto</option>
               <option value="brutto">Brutto</option>
             </select>
-            <CheckboxWithLabel label="MwSt Ausweis" checked={formData.mwstAusweis} onChange={handleChange} name="mwstAusweis"/>
+            <CheckboxWithLabel label="MwSt Ausweis" checked={vehicleData.mwstAusweis || false} onChange={handleChange} name="mwstAusweis"/>
           </div>
         </div>
         <div className="form-row">
@@ -213,14 +182,14 @@ const TabVerkauf = () => {
             <input
               type="text"
               name="minPreis"
-              value={formData.minPreis}
+              value={vehicleData.minPreis || 0}
               onChange={handleChange}
               className="form-input"
               placeholder=""
             />
             <select
               name="minPreisTyp"
-              value={formData.minPreisTyp}
+              value={vehicleData.minPreisTyp || ''}
               onChange={handleChange}
               className="form-select"
             >
@@ -228,7 +197,7 @@ const TabVerkauf = () => {
               <option value="netto">Netto</option>
               <option value="brutto">Brutto</option>
             </select>
-            <CheckboxWithLabel label="Nur für Export" checked={formData.nurFuerExport} onChange={handleChange} name="nurFuerExport"/>
+            <CheckboxWithLabel label="Nur für Export" checked={vehicleData.nurFuerExport || false} onChange={handleChange} name="nurFuerExport"/>
           </div>
         </div>
         <div className="form-row">
@@ -237,14 +206,14 @@ const TabVerkauf = () => {
             <input
               type="text"
               name="haendlerPreis"
-              value={formData.haendlerPreis}
+              value={vehicleData.haendlerPreis || 0}
               onChange={handleChange}
               className="form-input"
               placeholder=""
             />
             <select
               name="haendlerPreisTyp"
-              value={formData.haendlerPreisTyp}
+              value={vehicleData.haendlerPreisTyp || ''}
               onChange={handleChange}
               className="form-select"
             >
@@ -252,7 +221,7 @@ const TabVerkauf = () => {
               <option value="netto">Netto</option>
               <option value="brutto">Brutto</option>
             </select>
-            <CheckboxWithLabel label="Verkauft" checked={formData.verkauft} onChange={handleChange} name="verkauft"/>
+            <CheckboxWithLabel label="Verkauft" checked={vehicleData.verkauft || false} onChange={handleChange} name="verkauft"/>
           </div>
         </div>
         <div className="form-row">
@@ -261,14 +230,14 @@ const TabVerkauf = () => {
             <input
               type="text"
               name="neupreis"
-              value={formData.neupreis}
+              value={vehicleData.neupreis || 0}
               onChange={handleChange}
               className="form-input"
               placeholder=""
             />
             <select
               name="neupreisTyp"
-              value={formData.neupreisTyp}
+              value={vehicleData.neupreisTyp || ''}
               onChange={handleChange}
               className="form-select"
             >
@@ -286,7 +255,7 @@ const TabVerkauf = () => {
             <input
               type="text"
               name="nettoVk"
-              value={formData.nettoVk}
+              value={vehicleData.nettoVk || 0}
               onChange={handleChange}
               className="form-input"
               placeholder=""
@@ -297,7 +266,7 @@ const TabVerkauf = () => {
             <input
               type="date"
               name="vkDatum"
-              value={formData.vkDatum}
+              value={formatDateForInput(vehicleData.vkDatum) || ''}
               onChange={handleChange}
               className="form-input"
               placeholder=""
@@ -310,7 +279,7 @@ const TabVerkauf = () => {
             <input
               type="text"
               name="transport"
-              value={formData.transport}
+              value={vehicleData.transport || ''}
               onChange={handleChange}
               className="form-input"
               placeholder=""
@@ -319,7 +288,7 @@ const TabVerkauf = () => {
           <label className="form-label">Währung</label>
             <select
               name="waehrung"
-              value={formData.waehrung}
+              value={vehicleData.waehrung || ''}
               onChange={handleChange}
               className="form-select"
             >
@@ -334,7 +303,7 @@ const TabVerkauf = () => {
             <input
               type="text"
               name="mwst"
-              value={formData.mwst}
+              value={vehicleData.mwst || 0}
               onChange={handleChange}
               className="form-input"
               placeholder=""
@@ -343,13 +312,13 @@ const TabVerkauf = () => {
           <label className="form-label">Zahlungsart</label>
             <select
               name="zahlungsart"
-              value={formData.zahlungsart}
+              value={vehicleData.zahlungsart || ''}
               onChange={handleChange}
               className="form-select"
             >
               <option value="" disabled hidden></option>
-              <option value="eur">EUR</option>
-              <option value="usd">USD</option>
+              <option value="bar">Bar</option>
+              <option value="bank">Bank</option>
             </select>
         </div>
         <div className="form-row">
@@ -358,7 +327,7 @@ const TabVerkauf = () => {
             <input
               type="text"
               name="bruttoVk"
-              value={formData.bruttoVk}
+              value={vehicleData.bruttoVk || 0}
               onChange={handleChange}
               className="form-input"
               placeholder=""
@@ -384,8 +353,8 @@ const TabVerkauf = () => {
           <button type="button" className="verkauf-button">
             Zahlen buchen
           </button>
-          <button type="button" className="verkauf-button">
-            Verkauft
+          <button type="button" className="verkauf-button" onClick={onSave}>
+            {isEditing ? 'Aktualisieren' : 'Verkauft'}
           </button>
           
           {/* Rechnung section */}
@@ -393,12 +362,12 @@ const TabVerkauf = () => {
           <div className="rechnung-section">
             <h3 className="section-headline">Rechnung</h3>
             <div className="checkbox-group">
-              <RoundCheckbox label="Netto-EG" checked={formData.nettoEG} onChange={handleChange} name="nettoEG" />
-              <RoundCheckbox label="Brutto-EG" checked={formData.bruttoEG} onChange={handleChange} name="bruttoEG" />
-              <RoundCheckbox label="Netto-Export" checked={formData.nettoExport} onChange={handleChange} name="nettoExport" />
-              <RoundCheckbox label="Brutto-Export" checked={formData.bruttoExport} onChange={handleChange} name="bruttoExport" />
-              <RoundCheckbox label="Differenzbest." checked={formData.differenzbest} onChange={handleChange} name="differenzbest" />
-              <RectangularCheckboxBefore label="Präferenztext" checked={formData.praeferenztext} onChange={handleChange} name="praeferenztext" />
+              <RoundCheckbox label="Netto-EG" checked={vehicleData.nettoEG || false} onChange={handleChange} name="nettoEG" />
+              <RoundCheckbox label="Brutto-EG" checked={vehicleData.bruttoEG || false} onChange={handleChange} name="bruttoEG" />
+              <RoundCheckbox label="Netto-Export" checked={vehicleData.nettoExport || false} onChange={handleChange} name="nettoExport" />
+              <RoundCheckbox label="Brutto-Export" checked={vehicleData.bruttoExport || false} onChange={handleChange} name="bruttoExport" />
+              <RoundCheckbox label="Differenzbest." checked={vehicleData.differenzbest || false} onChange={handleChange} name="differenzbest" />
+              <RectangularCheckboxBefore label="Präferenztext" checked={vehicleData.praeferenztext || false} onChange={handleChange} name="praeferenztext" />
             </div>
           </div>
         </div>
