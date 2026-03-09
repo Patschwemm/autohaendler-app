@@ -91,6 +91,7 @@ public class Vehicle
     // Fahrzeug Tab - Technical Specs (defaults to 0)
     public int KW { get; set; }
     public int PS { get; set; }
+    public int Hubraum { get; set; }
     public int Zylinder { get; set; }
     public int Gaenge { get; set; }
     public int Tueren { get; set; }

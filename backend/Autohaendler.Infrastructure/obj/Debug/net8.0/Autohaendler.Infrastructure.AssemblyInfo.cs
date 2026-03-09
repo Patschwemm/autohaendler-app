@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Autohaendler.Infrastructure")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8498cb127d8d025832b3a3364de5222e43f55dd0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5c2a5b132dd67ba4b6a47b8eb8e73e22795e4148")]
 [assembly: System.Reflection.AssemblyProductAttribute("Autohaendler.Infrastructure")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Autohaendler.Infrastructure")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

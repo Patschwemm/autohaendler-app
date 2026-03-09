@@ -36,6 +36,7 @@ const TabFahrzeug: React.FC<TabFahrzeugProps> = ({ vehicleData, handleChange }) 
   const autoinfoInput1 = [
     { label : "kW", name: "kw"},
     { label : "PS", name: "ps"},
+    { label : "Hubraum", name: "hubraum"},
     { label : "Zylinder", name: "zylinder"},
     { label : "Gänge", name: "gaenge"},
     { label : "Türen", name: "tueren"},

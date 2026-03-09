@@ -6,6 +6,7 @@ import TabAnkauf from './Fahrzeuge/TabAnkauf';
 import TabAusstattung from './Fahrzeuge/TabAusstattung';
 import TabFahrzeug from './Fahrzeuge/TabFahrzeug';
 import TabVerkauf from './Fahrzeuge/TabVerkauf';
+import TabRechnung from './Fahrzeuge/TabRechnung';
 
 interface Vehicle {
   id: number;
@@ -97,6 +98,7 @@ interface Vehicle {
   // Fahrzeug - Technical Specs
   kw: number;
   ps: number;
+  hubraum: number;
   zylinder: number;
   gaenge: number;
   tueren: number;
@@ -320,6 +322,7 @@ const Fahrzeuge = () => {
     // Fahrzeug - Technical Specs
     kw: 0,
     ps: 0,
+    hubraum: 0,
     zylinder: 0,
     gaenge: 0,
     tueren: 0,
@@ -420,7 +423,7 @@ const Fahrzeuge = () => {
   const [isEditing, setIsEditing] = useState<boolean>(false);
 
   const tabNames = [
-    "Ankauf", "Verkauf", "Fahrzeug", "Ausstattung"
+    "Ankauf", "Verkauf", "Fahrzeug", "Ausstattung", "Rechnung"
   ]
 
   const [currentTab, setCurrentTab] = useState('Ausstattung');
@@ -458,7 +461,7 @@ const Fahrzeuge = () => {
       nettoEk: 0, ankaufMwst: 0, bruttoEk: 0, kaufdatum: '', ankaufWaehrung: '', ankaufZahlungsart: '', abmeldung: '',
       fahrgestellnummer: '', motornummer: '', briefnummer: '', herstellerschluessel: '', typschluessel: '', schwackecode: '',
       innenfarbe: '', polsterung: '', getriebe: '', kraftstoff: '', schadstoffklasse: '',
-      kw: 0, ps: 0, zylinder: 0, gaenge: 0, tueren: 0, sitze: 0, leergewicht: 0, gesamtgewicht: 0, modelljahr: 0, laufleistung: 0, anzahlHalter: 0,
+      kw: 0, ps: 0, hubraum: 0, zylinder: 0, gaenge: 0, tueren: 0, sitze: 0, leergewicht: 0, gesamtgewicht: 0, modelljahr: 0, laufleistung: 0, anzahlHalter: 0,
       garantie: false, schaden: false, unfall: false, huau: false, verbrauch: false,
       innerorts: 0, ausserorts: 0, kombiniert: 0,
       abs: false, airbag1: false, airbag2: false, airbag4: false, alarmanlage: false, allrad: false, anhaengerkupplung: false,
@@ -599,7 +602,7 @@ const Fahrzeuge = () => {
       // Ensure proper data types for numeric fields
       const numericFields = [
         'preis', 'minPreis', 'haendlerPreis', 'neupreis', 'nettoVk', 'bruttoVk', 'mwst',
-        'nettoEk', 'ankaufMwst', 'bruttoEk', 'kw', 'ps', 'zylinder', 'gaenge', 'tueren',
+        'nettoEk', 'ankaufMwst', 'bruttoEk', 'kw', 'ps', 'hubraum', 'zylinder', 'gaenge', 'tueren',
         'sitze', 'leergewicht', 'gesamtgewicht', 'modelljahr', 'laufleistung', 'anzahlHalter',
         'innerorts', 'ausserorts', 'kombiniert', 'standzeit', 'baujahr', 'kilometerstand'
       ];
@@ -748,6 +751,8 @@ const Fahrzeuge = () => {
         return <TabFahrzeug vehicleData={vehicleData} handleChange={handleChange} />;
       case "Ausstattung":
         return <TabAusstattung vehicleData={vehicleData} handleChange={handleChange} />;
+      case "Rechnung":
+        return <TabRechnung vehicleData={vehicleData} handleChange={handleChange} />;  
       default:
         return null;
     }
